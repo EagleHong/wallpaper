@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wallpaper.mapper.PictureMapper">
+    <resultMap id="WallPaperEntity" type="com.example.wallpaper.domain.WallPaperEntity">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="minUrl" property="minUrl" jdbcType="VARCHAR"/>
+        <result column="width" property="width" jdbcType="INTEGER"/>
+        <result column="height" property="height" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="list" resultMap="WallPaperEntity">
+        select id,url,minUrl,width,height from pictures limit ${offset},${limit}
+    </select>
+
+    <select id="SearchMD5Code" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from pictures where MD5 = #{md5Code,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="upLoad" parameterType="com.example.wallpaper.domain.Picture">
+        insert into pictures
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="minUrl != null">
+                minUrl,
+            </if>
+            <if test="MD5Code != null">
+                MD5,
+            </if>
+            height,width,
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=CHAR},
+            </if>
+            <if test="minUrl != null">
+                #{minUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="MD5Code != null">
+                #{MD5Code,jdbcType=VARCHAR},
+            </if>
+            <if test="height != null">
+                #{height,jdbcType=INTEGER},
+            </if>
+            <if test="width != null">
+                #{width,jdbcType=INTEGER},
+            </if>
+        </trim>
+        <selectKey resultType="java.lang.Integer" keyProperty="id" >
+            SELECT @@IDENTITY AS ID
+        </selectKey>
+    </insert>
+</mapper>
