@@ -1,5 +1,9 @@
 server:
   port: 8080
+  ssl:
+    key-store: classpath:maoyou.site.jks
+    key-store-password: xx10daor0vb
+    key-store-type: JKS
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -12,4 +16,6 @@ spring:
       static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${wallpaper.imagesPath}
 wallpaper:
   imagesPath: /home/ubuntu/hong/wallpaper/
+
+
 

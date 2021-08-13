@@ -60,7 +60,7 @@ public class FileUploadUtil {
 
 
         Picture picture = new Picture(null,null, multipartFile.getOriginalFilename(),
-                "http://81.70.245.251:8080//rawPic/"+str+"."+type,"http://81.70.245.251:8080//minPic/"+str+"."+type,null,height,width);
+                "https://maoyou.site//rawPic/"+str+"."+type,"https://maoyou.site//minPic/"+str+"."+type,null,height,width);
         return picture;
     }
 }
