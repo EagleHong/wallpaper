@@ -11,7 +11,7 @@
         <result column="height" property="height" jdbcType="INTEGER"/>
     </resultMap>
     <select id="list" resultMap="WallPaperEntity">
-        select id,url,minUrl,width,height from pictures limit ${offset},${limit}
+        select id,url,minUrl,width,height from  pictures order by id desc limit ${offset},${limit}
     </select>
 
     <select id="SearchMD5Code" parameterType="java.lang.String" resultType="java.lang.Integer">

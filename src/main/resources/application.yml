@@ -11,6 +11,11 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/wallpaper
     username: hong
     password: 123456
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
   web:
     resources:
       static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${wallpaper.imagesPath}

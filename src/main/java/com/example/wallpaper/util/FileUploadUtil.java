@@ -18,6 +18,7 @@ import java.io.IOException;
 
 @Component
 public class FileUploadUtil {
+    static final double smallPicWidth = 720.0;
 
 
     public static Picture upload(MultipartFile multipartFile,String imagesPath) throws IOException {
@@ -51,7 +52,7 @@ public class FileUploadUtil {
         }
         //储存
         try{
-            Thumbnails.of(multipartFile.getInputStream()).scale(500.0/width).toFile(smallFile);
+            Thumbnails.of(multipartFile.getInputStream()).scale(smallPicWidth/width).toFile(smallFile);
             multipartFile.transferTo(file);
         }catch (IOException e){
             e.printStackTrace();
