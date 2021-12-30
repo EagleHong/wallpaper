@@ -18,6 +18,10 @@
         select count(*) from pictures where MD5 = #{md5Code,jdbcType=VARCHAR}
     </select>
 
+    <select id="getTotal" resultType="java.lang.Integer">
+        select count(*) from pictures
+    </select>
+
     <insert id="upLoad" parameterType="com.example.wallpaper.domain.Picture">
         insert into pictures
         <trim prefix="(" suffix=")" suffixOverrides=",">

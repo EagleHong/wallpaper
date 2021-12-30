@@ -45,11 +45,16 @@ public class AllPictureController {
         return wallPaperListResult;
     }
 
+    @GetMapping("/totalNum")
+    public int totalNum(){
+        return picService.getTotal();
+    }
+
     @PostMapping("/upload")
     public int upload(@RequestParam("file") MultipartFile multipartFile,@Value("${wallpaper.imagesPath}")String url){
-        System.out.println("got http request");
+        System.out.println("got upload request");
         /*
-        * 返回1 成功 2 文件已存在 3 文件不是图片或者其他错误
+        * 返回:1 成功, 2 文件已存在, 3 文件不是图片或者其他错误
         * */
         try{
             String MD5Code = DigestUtils.md5DigestAsHex(multipartFile.getInputStream());

@@ -36,4 +36,9 @@ public class PicServiceImpl implements PicService {
     public int SearchMD5Code(String md5Code) {
         return pictureMapper.SearchMD5Code(md5Code);
     }
+
+    @Override
+    public int getTotal() {
+        return pictureMapper.getTotal();
+    }
 }

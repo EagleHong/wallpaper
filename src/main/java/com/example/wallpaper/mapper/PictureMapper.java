@@ -16,4 +16,5 @@ public interface PictureMapper {
     List<WallPaperEntity> list(@Param("offset") int offset,@Param("limit") int limit);
     int upLoad(Picture picture);
     int SearchMD5Code(String md5Code);
+    int getTotal();
 }

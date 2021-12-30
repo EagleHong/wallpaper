@@ -47,12 +47,15 @@ public class FileUploadUtil {
             image = ImageIO.read(multipartFile.getInputStream());
             height = image.getHeight();
             width = image.getWidth();
+            image = null;
         }catch (IOException e){
             e.printStackTrace();
         }
         //储存
         try{
+            //储存原图
             Thumbnails.of(multipartFile.getInputStream()).scale(smallPicWidth/width).toFile(smallFile);
+            //储存小图
             multipartFile.transferTo(file);
         }catch (IOException e){
             e.printStackTrace();

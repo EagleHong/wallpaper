@@ -13,4 +13,5 @@ public interface PicService {
     List<WallPaperEntity> list(int pcursor, int limit);
     int upLoad(Picture picture);
     int SearchMD5Code(String md5Code);
+    int getTotal();
 }
